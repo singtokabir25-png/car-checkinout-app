@@ -24,7 +24,7 @@ export function createClient() {
             // Called from a Server Component with no writable cookie store — ignore.
           }
         },
-        remove(name: string, options) {
+        remove(name: string, options: any) {
           try {
             cookieStore.set({ name, value: "", ...options });
           } catch {
