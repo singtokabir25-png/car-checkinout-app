@@ -98,7 +98,7 @@ export async function createTransaction(
 
     const { data, error } = await supabase
       .from("transactions")
-      .insert(insertPayload)
+      .insert(insertPayload as any)
       .select("id")
       .single();
 
