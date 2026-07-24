@@ -104,7 +104,9 @@ export async function createTransaction(
 
     if (error) throw error;
 
-    return { id: data.id };
+    // บังคับแปลง Type ของ data เพื่อป้องกันปัญหา never type บน Vercel build
+    const result = data as { id: string };
+    return { id: result.id };
   } catch (err) {
     console.error("createTransaction failed:", err);
     return { error: err instanceof Error ? err.message : "Unknown error" };
